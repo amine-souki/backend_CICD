@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Run SonarContainer to Docker_host') {
             steps{
-                sh 'ssh -T dockeradmin@3.239.13.85'
+                sh 'ssh -tt dockeradmin@3.239.13.85'
                 sh 'docker run -d -p 9000:9000 sonarqube:8.9.7-community'
             }
         }
