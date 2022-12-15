@@ -10,7 +10,18 @@ pipeline{
                             url: 'https://github.com/amine-souki/backend_CICD.git']]])
                 }
             }
-        }    
+        }
+        stage('Cleaning the project') {
+            steps{
+                sh 'mvn -B -DskipTests clean ' 
+            }
+        }
+        stage('Artifact Construction') {
+            steps{
+                sh 'mvn -B -DskipTests package' 
+            }
+        }
+
     }
 }
        
