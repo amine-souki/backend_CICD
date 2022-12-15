@@ -1,12 +1,13 @@
 pipeline{
-    agent any
-    stages {
-        def remote = [:]
+    def remote = [:]
         remote.name = 'docker'
         remote.host = '172.31.67.173'
         remote.user = 'dockeradmin'
         remote.password = 'Docker122'
         remote.allowAnyHosts = true
+        
+    agent any
+    stages {
         
         stage ('Get project from Github'){
             steps{
