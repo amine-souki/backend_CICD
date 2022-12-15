@@ -21,6 +21,13 @@ pipeline{
                 sh 'mvn -B -DskipTests package' 
             }
         }
+        stage('Code Analysis with SonarQube') {
+            steps{
+                sh 'ssh dockeradmin@3.239.13.85'
+                sh 'docker run -d -p 9000:9000 sonarqube:8.9.7-community'
+                sh 'mvn sonar:sonar -Dsonar.projectKey=sonarCICD -Dsonar.host.url=http://192.168.1.16:9000 -Dsonar.login=bebc5d801f9b0b7a26a4c67099314df083fc7bce' 
+            }
+        }
 
     }
 }
